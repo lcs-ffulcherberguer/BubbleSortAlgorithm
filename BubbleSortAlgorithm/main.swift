@@ -13,7 +13,7 @@ print("Hello, World!")
 func waitForInput()  {
     print("Press RETURN to continue...")
     _ = readLine()
-
+    
 }
 
 //Create an empty array
@@ -32,35 +32,49 @@ waitForInput()
 
 //Sort the array
 
+var sorted = 0
+
+var isSwapped = false
+
 //Loop through the the entire array "n" times
 // (however many times there are elements in the array
-for j in 0..<dataSet.count {
-
-
-
-// One pass through the array to float the highest numeber to the end
-for j in 0..<dataSet.count - 1 {
+for i in 0..<dataSet.count  {
     
-    //Compare left value to right value
-    if dataSet[j] > dataSet[j + 1] {
+    isSwapped = false
+    
+    
+    // One pass through the array to float the highest numeber to the end
+    for j in 0..<dataSet.count - 1 - i{
         
-        //Swap the values when the left value is greater than the right value
-        let temporaryValue = dataSet[j]   // Set aside the left value
-        dataSet[j] = dataSet[j + 1]       // Replace left with right
-        dataSet[j + 1] = temporaryValue   // Replace right with temporary value
+        isSwapped = false
         
-        
+        //Compare left value to right value
+        if dataSet[j] > dataSet[j + 1] {
+            isSwapped = true
+            //Swap the values when the left value is greater than the right value
+            let temporaryValue = dataSet[j]   // Set aside the left value
+            dataSet[j] = dataSet[j + 1]       // Replace left with right
+            dataSet[j + 1] = temporaryValue   // Replace right with temporary value
+            
+            
+        }
+       
     }
     
+    //Stop further passes if there
+    if isSwapped == false {
+        break
+    }
     
-}
-
-//Print the array after "n" passes
-print("Array after pass ")
-print(dataSet)
-waitForInput()
-
-
+    sorted += 1
+    
+    
+    //Print the array after "n" passes
+    print("Array after pass\(i + 1)")
+    print(dataSet)
+    waitForInput()
+    
+    
 }
 
 //Print sorted array
